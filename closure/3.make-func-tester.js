@@ -9,7 +9,17 @@ The returned function should:
   - Otherwise, the returned function should return false. 
 */
 
-function makeFuncTester(arrOfTests) {}
+const makeFuncTester = (arrOfTests) => {
+  return (cb) => {
+    let passes = true;
+    arrOfTests.forEach((test) => {
+      if (cb(test[0]) !== test[1]) {
+        passes = false;
+      }
+    });
+    return passes;
+  };
+};
 
 // /*** Uncomment these to check your work! ***/
 const capLastTestCases = [];
